@@ -2,8 +2,8 @@ package studio.bz_soft.catviewer.root
 
 import android.app.Application
 import org.koin.android.ext.android.startKoin
-import studio.bz_soft.radioultra.di.appModule
-import studio.bz_soft.radioultra.di.navigatorModule
+import studio.bz_soft.catviewer.di.appModule
+import studio.bz_soft.catviewer.di.navigatorModule
 
 class App : Application() {
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuTitleCategories"
+        android:icon="@drawable/ic_droid"
+        android:title="@string/main_menu_title_categories" />
+    <item
+        android:id="@+id/menuTitleBreeds"
+        android:icon="@drawable/ic_droid"
+        android:title="@string/main_menu_title_breeds" />
+    <item
+        android:id="@+id/menuTitleMore"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/main_menu_title_more" />
+</menu>
