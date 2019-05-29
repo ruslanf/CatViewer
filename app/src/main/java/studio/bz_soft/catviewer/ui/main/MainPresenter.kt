@@ -6,4 +6,7 @@ class MainPresenter(
     private val router: MainRouter
 ) {
 
+    private fun onBackPressed() {
+        router.exit()
+    }
 }
