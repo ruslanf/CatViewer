@@ -6,17 +6,33 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_main.view.*
+import org.koin.android.ext.android.get
 import studio.bz_soft.catviewer.R
 import studio.bz_soft.catviewer.root.BackPressedInterface
 import studio.bz_soft.catviewer.ui.main.breeds.BreedsFragment
 import studio.bz_soft.catviewer.ui.main.categories.CategoriesFragment
 import studio.bz_soft.catviewer.ui.main.more.MoreFragment
 
-class MainFragment : Fragment(), BackPressedInterface {
+class MainFragment : Fragment(), BackPressedInterface, MainFragmentInterface {
 
     private val moreFragment = MoreFragment.instance()
     private val breedsFragment = BreedsFragment.instance()
     private val categoriesFragment = CategoriesFragment.instance()
+    private val mainPresenter: MainPresenter = MainPresenter(view, get())
+
+    override fun renderFragment(screen: MainScreens) {
+        val fragment: Fragment = when (screen) {
+            MainScreens.CategoriesScreen -> categoriesFragment
+            MainScreens.BreedsScreen -> breedsFragment
+            MainScreens.MoreScreen -> moreFragment
+        }
+        childFragmentManager.beginTransaction()
+                .hide(categoriesFragment)
+                .hide(breedsFragment)
+                .hide(moreFragment)
+                .show(fragment)
+                .commit()
+    }
 
     private fun getCurrentFragment(): Fragment? =
         view?.let {
